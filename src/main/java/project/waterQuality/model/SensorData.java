@@ -2,6 +2,8 @@ package project.waterQuality.model;
 
 import java.time.LocalDateTime;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -17,7 +19,8 @@ public class SensorData {
 
 	private String type;
 
-	private Double temperature;
+	@JsonProperty("value")
+	private Double value;
 
 	@Column(updatable = false)
 	private LocalDateTime timestamp;
@@ -38,11 +41,11 @@ public class SensorData {
 		this.timestamp = timestamp;
 	}
 
-	public Double getTemperature() {
-		return temperature;
+	public Double getValue() {
+		return value;
 	}
 
-	public void setTemperature(Double temperature) {
-		this.temperature = temperature;
+	public void setValue(Double temperature) {
+		this.value = temperature;
 	}
 }

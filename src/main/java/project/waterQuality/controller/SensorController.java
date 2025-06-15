@@ -1,8 +1,9 @@
 package project.waterQuality.controller;
 
 import java.util.List;
+
+import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,8 +25,7 @@ public class SensorController {
 
 	@GetMapping("/sensor-data")
 	public ResponseEntity<List<SensorData>> getAllSensorData() {
-		List<SensorData> data = repository.findAll();
-		return ResponseEntity.ok(data);
+		return ResponseEntity.ok(repository.findAll(Sort.by("timestamp").descending()));
 	}
 
 	@GetMapping("/sensor-data/{id}")
