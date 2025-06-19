@@ -50,6 +50,10 @@ public class SensorController {
 		@RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime startDate,
 		@RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime endDate ) {
 		
+    	System.out.println("Received request - type: " + type + 
+                      ", startDate: " + startDate + 
+                      ", endDate: " + endDate);
+
 		List<SensorData> filteredData;
 		if (startDate != null && endDate != null) {
 			filteredData = sensorService.getSensorDataByTypeAndDateRange(type, startDate, endDate);
